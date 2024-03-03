@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisch</title>
+    <style>
+        body {
+            background-color: #202020;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="graphCanvas" width="960" height="400"></canvas>
+
+    <script src="graphifyjs.js"></script>
+
+    <script>
+        const canvas = document.getElementById("graphCanvas");
+        const datasets = [
+            [0],
+            [0]
+        ];
+        const colors = ["#ff0000", "#00ff00"];
+
+        // canvas, start data, bezier curve, update interval, steps
+        const myGraph = new Graph(canvas, datasets, colors, true, 500, 10);
+        myGraph.start();
+
+        //new data in here
+        setInterval(() => {
+            myGraph.updateDatasets([Math.round(Math.random(1)*32), Math.round(Math.random(1)*2)]); // Passing an array with two elements as new data for the datasets
+        }, 500);
+
+    </script>
+</body>
+</html>
